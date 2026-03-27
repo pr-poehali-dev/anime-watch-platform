@@ -198,7 +198,7 @@ export default function Index() {
       {/* NAVBAR */}
       <nav style={{ background: "rgba(8,8,16,0.92)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(180,77,255,0.2)", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-          <div className="font-zen glitch" style={{ fontSize: 22, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }} onClick={() => setActivePage("home")}>
+          <div className="font-zen glitch" style={{ fontSize: 22, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }} onClick={() => { const newest = [...ANIME_DATA].filter(a => a.isNew).pop() || [...ANIME_DATA].at(-1)!; openAnime(newest); }}>
             <span style={{ color: "var(--neon-pink)", textShadow: "0 0 8px rgba(255,45,120,1), 0 0 20px rgba(255,45,120,0.9), 0 0 40px rgba(255,45,120,0.6), 0 0 80px rgba(180,77,255,0.4)" }}>Аниме</span>
             <span style={{ color: "white", textShadow: "0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(180,77,255,0.8), 0 0 40px rgba(180,77,255,0.5)" }}>Портал</span>
           </div>
