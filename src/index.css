@@ -394,6 +394,26 @@
   }
 }
 
+@keyframes neon-flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.85;
+    filter: brightness(0.9);
+  }
+}
+
 @keyframes sakura-fall {
   0% {
     transform: translateY(-20px) rotate(0deg);
