@@ -7,7 +7,7 @@ const ANIME_DATA = [
   {
     id: 1,
     title: "Клинок, рассекающий демонов",
-    titleJp: "鬼滅の刃",
+    titleJp: "Клинок",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/fcb7b6e2-8e17-475d-8c8c-4b72575f45ea.jpg",
     genres: ["Экшн", "Фэнтези", "Драма"],
     rating: 9.1,
@@ -21,7 +21,7 @@ const ANIME_DATA = [
   {
     id: 2,
     title: "Атака титанов",
-    titleJp: "進撃の巨人",
+    titleJp: "Атака",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/b3a31336-f102-409e-9456-488864d052cf.jpg",
     genres: ["Экшн", "Тёмное фэнтези"],
     rating: 9.0,
@@ -35,7 +35,7 @@ const ANIME_DATA = [
   {
     id: 3,
     title: "Твоё имя",
-    titleJp: "君の名は",
+    titleJp: "Твоё имя",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/6c45aa6a-4f6d-46b5-84cc-90439f09b832.jpg",
     genres: ["Романтика", "Драма", "Фэнтези"],
     rating: 8.9,
@@ -49,7 +49,7 @@ const ANIME_DATA = [
   {
     id: 4,
     title: "Код Гиас",
-    titleJp: "コードギアス",
+    titleJp: "Код Гиас",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/b3a31336-f102-409e-9456-488864d052cf.jpg",
     genres: ["Меха", "Экшн", "Драма"],
     rating: 8.8,
@@ -63,7 +63,7 @@ const ANIME_DATA = [
   {
     id: 5,
     title: "Магическая битва",
-    titleJp: "呪術廻戦",
+    titleJp: "Магическая битва",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/fcb7b6e2-8e17-475d-8c8c-4b72575f45ea.jpg",
     genres: ["Экшн", "Тёмное фэнтези"],
     rating: 8.7,
@@ -77,7 +77,7 @@ const ANIME_DATA = [
   {
     id: 6,
     title: "Одним ударом",
-    titleJp: "ワンパンマン",
+    titleJp: "Одним ударом",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/b3a31336-f102-409e-9456-488864d052cf.jpg",
     genres: ["Комедия", "Экшн", "Супергерой"],
     rating: 8.6,
@@ -91,7 +91,7 @@ const ANIME_DATA = [
   {
     id: 7,
     title: "Хвост феи",
-    titleJp: "フェアリーテイル",
+    titleJp: "Хвост феи",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/6c45aa6a-4f6d-46b5-84cc-90439f09b832.jpg",
     genres: ["Приключения", "Фэнтези", "Комедия"],
     rating: 8.3,
@@ -105,7 +105,7 @@ const ANIME_DATA = [
   {
     id: 8,
     title: "Re:Zero",
-    titleJp: "リゼロ",
+    titleJp: "Re:Zero",
     image: "https://cdn.poehali.dev/projects/908e2866-07ca-402b-970e-a51b448b7526/files/fcb7b6e2-8e17-475d-8c8c-4b72575f45ea.jpg",
     genres: ["Исекай", "Драма", "Тёмное фэнтези"],
     rating: 8.8,
@@ -196,8 +196,8 @@ export default function Index() {
       <nav style={{ background: "rgba(8,8,16,0.92)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(180,77,255,0.2)", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <div className="font-zen glitch" style={{ fontSize: 22, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }} onClick={() => setActivePage("home")}>
-            <span className="neon-text-pink">アニメ</span>
-            <span style={{ color: "white" }}>ポータル</span>
+            <span className="neon-text-pink">Аниме</span>
+            <span style={{ color: "white" }}>Портал</span>
           </div>
 
           <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
@@ -302,7 +302,7 @@ export default function Index() {
           <div>
             <div style={{ marginBottom: 32 }}>
               <h1 className="font-rajdhani" style={{ fontSize: 32, fontWeight: 700, color: "white", marginBottom: 8 }}>
-                <span className="neon-text-purple">カタログ</span> Каталог аниме
+                <span className="neon-text-purple">★</span> Каталог аниме
               </h1>
               <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Найдено {filteredAnime.length} тайтлов</p>
             </div>
@@ -562,7 +562,7 @@ export default function Index() {
       )}
 
       <footer style={{ borderTop: "1px solid rgba(180,77,255,0.1)", marginTop: 64, padding: "32px 24px", textAlign: "center" }}>
-        <div className="font-zen neon-text-pink" style={{ fontSize: 18, marginBottom: 8 }}>アニメポータル</div>
+        <div className="font-zen neon-text-pink" style={{ fontSize: 18, marginBottom: 8 }}>АнимеПортал</div>
         <div style={{ color: "rgba(255,255,255,0.25)", fontSize: 13 }}>© 2024 АнимеПортал · Смотри любимое аниме в HD</div>
       </footer>
     </div>
