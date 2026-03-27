@@ -142,6 +142,8 @@ export default function Index() {
     { id: 3, user: "СакураЧан", text: "Плакала на каждой серии 😭", time: "1 д назад", avatar: "🌸" },
   ]);
   const [newComment, setNewComment] = useState("");
+  const [watchedCount] = useState(3);
+  const [commentCount, setCommentCount] = useState(3);
 
   useEffect(() => {
     const pts = Array.from({ length: 12 }, (_, i) => ({
@@ -173,6 +175,7 @@ export default function Index() {
   const addComment = () => {
     if (!newComment.trim()) return;
     setComments((prev) => [{ id: Date.now(), user: "Вы", text: newComment, time: "Только что", avatar: "⭐" }, ...prev]);
+    setCommentCount((c) => c + 1);
     setNewComment("");
   };
 
@@ -392,20 +395,54 @@ export default function Index() {
               </div>
 
               <div className="anime-card" style={{ padding: 24, marginTop: 20 }}>
-                <div className="font-rajdhani" style={{ fontSize: 16, fontWeight: 700, color: "white", marginBottom: 16 }}>Достижения</div>
+                <div className="font-rajdhani" style={{ fontSize: 16, fontWeight: 700, color: "white", marginBottom: 18, display: "flex", alignItems: "center", gap: 8 }}>
+                  🏅 Достижения
+                </div>
                 {[
-                  { icon: "🏆", title: "Первый просмотр", desc: "Посмотрел первое аниме" },
-                  { icon: "❤️", title: "Коллекционер", desc: "Добавил 5+ в избранное" },
-                  { icon: "⭐", title: "Критик", desc: "Оставил 10+ оценок" },
-                ].map((ach) => (
-                  <div key={ach.title} style={{ display: "flex", gap: 12, marginBottom: 14, alignItems: "center" }}>
-                    <span style={{ fontSize: 24 }}>{ach.icon}</span>
-                    <div>
-                      <div style={{ color: "white", fontSize: 14, fontFamily: "'Rajdhani',sans-serif", fontWeight: 600 }}>{ach.title}</div>
-                      <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>{ach.desc}</div>
+                  {
+                    icon: "🎬", title: "Новичок", desc: "Просмотри 1 аниме", current: watchedCount, max: 1, unlocked: watchedCount >= 1, color: "var(--neon-cyan)"
+                  },
+                  {
+                    icon: "📺", title: "Заядлый зритель", desc: "Просмотри 5 аниме", current: watchedCount, max: 5, unlocked: watchedCount >= 5, color: "var(--neon-purple)"
+                  },
+                  {
+                    icon: "👑", title: "Аниме-мастер", desc: "Просмотри 20 аниме", current: watchedCount, max: 20, unlocked: watchedCount >= 20, color: "var(--neon-gold)"
+                  },
+                  {
+                    icon: "💬", title: "Болтун", desc: "Оставь 1 комментарий", current: commentCount, max: 1, unlocked: commentCount >= 1, color: "var(--neon-cyan)"
+                  },
+                  {
+                    icon: "🗣️", title: "Активист", desc: "Оставь 5 комментариев", current: commentCount, max: 5, unlocked: commentCount >= 5, color: "var(--neon-pink)"
+                  },
+                  {
+                    icon: "📢", title: "Голос сообщества", desc: "Оставь 20 комментариев", current: commentCount, max: 20, unlocked: commentCount >= 20, color: "var(--neon-gold)"
+                  },
+                  {
+                    icon: "❤️", title: "Коллекционер", desc: "Добавь 5+ в избранное", current: favList.length, max: 5, unlocked: favList.length >= 5, color: "var(--neon-pink)"
+                  },
+                ].map((ach) => {
+                  const pct = Math.min(100, Math.round((ach.current / ach.max) * 100));
+                  return (
+                    <div key={ach.title} style={{ marginBottom: 16, opacity: ach.unlocked ? 1 : 0.55, transition: "opacity 0.3s" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+                        <span style={{ fontSize: 22, filter: ach.unlocked ? "none" : "grayscale(1)" }}>{ach.icon}</span>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <span style={{ color: ach.unlocked ? "white" : "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'Rajdhani',sans-serif", fontWeight: 600 }}>{ach.title}</span>
+                            {ach.unlocked
+                              ? <span style={{ fontSize: 11, background: `${ach.color}22`, color: ach.color, border: `1px solid ${ach.color}55`, borderRadius: 10, padding: "1px 8px", fontFamily: "'Rajdhani',sans-serif", fontWeight: 700 }}>✓ Получено</span>
+                              : <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "'Rajdhani',sans-serif" }}>{ach.current}/{ach.max}</span>
+                            }
+                          </div>
+                          <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 11, marginBottom: 5 }}>{ach.desc}</div>
+                        </div>
+                      </div>
+                      <div className="progress-bar">
+                        <div className="progress-fill" style={{ width: `${pct}%`, background: ach.unlocked ? `linear-gradient(to right, ${ach.color}, ${ach.color})` : "linear-gradient(to right,var(--neon-pink),var(--neon-purple))", boxShadow: ach.unlocked ? `0 0 8px ${ach.color}88` : "none", transition: "width 0.5s ease" }} />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
